@@ -24,10 +24,13 @@ class HudCrosshair : public HudBase, public nitroapi::NitroApiHelper
     cvar_t* cl_crosshair_color_;
     cvar_t* cl_crosshair_size_;
     cvar_t* cl_crosshair_translucent_;
+    cvar_t* cl_crosshair_alpha_;
+    cvar_t* cl_crosshair_thickness_;
 
-    int m_R{}, m_G{}, m_B{};
+    int m_R{}, m_G{}, m_B{}, m_A{};
     int m_cvarR{}, m_cvarG{}, m_cvarB{};
     int m_bAdditive{};
+    int m_iThickness;
     char m_szLastCrosshairColor[16]{};
     char m_szLastCrosshairSize[16]{};
     int m_iAmmoLastCheck{};
@@ -48,6 +51,8 @@ private:
     void CalculateCrosshairSize();
     void CalculateCrosshairColor();
     void CalculateCrosshairDrawMode();
+    void CalculateCrosshairAlpha();
+    void CalculateCrosshairThickness();
 
     void DrawCrosshairEx(int iBarSize, float flCrosshairDistance, bool bAdditive, int r, int g, int b, int a);
 };
